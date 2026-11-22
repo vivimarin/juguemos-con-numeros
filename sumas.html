@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juego de sumas</title>
+<style>
+body{background:#fff0f6;font-family:"Comic Sans MS";text-align:center;padding:25px;color:#684c83}
+main{background:white;padding:25px;border-radius:25px;max-width:500px;margin:30px auto}
+h1{color:#ed79a9}
+.dibujo{font-size:65px}
+input{padding:12px;font-size:22px;width:100px;border-radius:12px}
+button,a{padding:12px 20px;background:#ff91bb;color:white;border:0;border-radius:18px;text-decoration:none;font-size:17px;cursor:pointer;margin:5px}
+</style>
+</head>
+<body>
+<main>
+<div class="dibujo">🍎🐻🍎</div>
+<h1>¡Vamos a sumar!</h1>
+<p>Ayuda al osito a juntar las manzanas.</p>
+<h2 id="pregunta">3 + 2 = ?</h2>
+<input id="respuesta" type="number">
+<br><br>
+<button onclick="comprobar()">Comprobar</button>
+<button onclick="nueva()">Otra suma</button>
+<h3 id="resultado"></h3>
+<a href="index.html">🏠 Volver al inicio</a>
+</main>
+<script>
+let a=3,b=2;
+function nueva(){
+a=Math.floor(Math.random()*10);
+b=Math.floor(Math.random()*10);
+document.getElementById("pregunta").innerText=a+" + "+b+" = ?";
+document.getElementById("respuesta").value="";
+document.getElementById("resultado").innerText="";
+}
+function comprobar(){
+let r=document.getElementById("respuesta").value;
+if(r==="")return;
+document.getElementById("resultado").innerText=
+Number(r)===a+b?"¡Excelente! 🎉 ⭐":"¡Inténtalo nuevamente! 💪";
+}
+</script>
+</body>
+</html>

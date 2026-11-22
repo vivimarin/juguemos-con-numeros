@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retos matemáticos</title>
+<style>
+body{background:#fff5d9;font-family:"Comic Sans MS";text-align:center;padding:25px;color:#84642f}
+main{background:white;padding:25px;border-radius:25px;max-width:500px;margin:30px auto}
+h1{color:#e6a63d}
+button,a{padding:13px 20px;background:#ffbd55;color:white;border:0;border-radius:18px;text-decoration:none;font-size:18px;cursor:pointer;margin:5px}
+#opciones{margin:20px}
+</style>
+</head>
+<body>
+<main>
+<div style="font-size:65px">🏰🎁⭐</div>
+<h1>¡El gran reto matemático!</h1>
+<p>Elige la respuesta correcta.</p>
+<h2 id="pregunta"></h2>
+<div id="opciones"></div>
+<h3 id="resultado"></h3>
+<h3 id="puntos">Estrellas: 0 ⭐</h3>
+<button onclick="nuevo()">Otro reto 🎲</button>
+<br><br>
+<a href="index.html">🏠 Volver al inicio</a>
+</main>
+<script>
+let correcta=0,puntos=0;
+function nuevo(){
+let a=Math.floor(Math.random()*10);
+let b=Math.floor(Math.random()*10);
+let resta=Math.random()>.5;
+if(resta && a<b)[a,b]=[b,a];
+correcta=resta?a-b:a+b;
+document.getElementById("pregunta").innerText=
+a+(resta?" - ":" + ")+b+" = ?";
+let opciones=[correcta,correcta+1,Math.max(0,correcta-1)];
+opciones.sort(()=>Math.random()-.5);
+let caja=document.getElementById("opciones");
+caja.innerHTML="";
+opciones.forEach(n=>{
+let boton=document.createElement("button");
+boton.innerText=n;
+boton.onclick=()=>{
+if(n===correcta){
+puntos++;
+document.getElementById("resultado").innerText="¡Correcto! 🎉";
+document.getElementById("puntos").innerText="Estrellas: "+puntos+" ⭐";
+}else{
+document.getElementById("resultado").innerText="¡Inténtalo otra vez! 💪";
+}
+};
+caja.appendChild(boton);
+});
+document.getElementById("resultado").innerText="";
+}
+nuevo();
+</script>
+</body>
+</html>

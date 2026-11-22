@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aprende a contar</title>
+<style>
+body{background:#f0ffe9;font-family:"Comic Sans MS";text-align:center;padding:25px;color:#54804c}
+main{background:white;padding:25px;border-radius:25px;max-width:500px;margin:30px auto}
+h1{color:#79b85d}
+#objetos{font-size:45px;line-height:1.7}
+input{padding:12px;font-size:22px;width:100px;border-radius:12px}
+button,a{padding:12px 20px;background:#83c76c;color:white;border:0;border-radius:18px;text-decoration:none;font-size:17px;cursor:pointer;margin:5px}
+</style>
+</head>
+<body>
+<main>
+<div style="font-size:65px">🦋🌻🐞</div>
+<h1>¡Vamos a contar!</h1>
+<p>Cuenta cuántas fresas aparecen.</p>
+<div id="objetos">🍓 🍓 🍓</div>
+<input id="respuesta" type="number">
+<br><br>
+<button onclick="comprobar()">Comprobar</button>
+<button onclick="nuevo()">Otros dibujos</button>
+<h3 id="resultado"></h3>
+<a href="index.html">🏠 Volver al inicio</a>
+</main>
+<script>
+let cantidad=3;
+function nuevo(){
+cantidad=Math.floor(Math.random()*10)+1;
+document.getElementById("objetos").innerText="🍓 ".repeat(cantidad);
+document.getElementById("respuesta").value="";
+document.getElementById("resultado").innerText="";
+}
+function comprobar(){
+let r=document.getElementById("respuesta").value;
+if(r==="")return;
+document.getElementById("resultado").innerText=
+Number(r)===cantidad?"¡Felicidades! 🎉":"¡Cuenta otra vez! 🦋";
+}
+</script>
+</body>
+</html>
